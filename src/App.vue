@@ -1,9 +1,9 @@
 <template>
   <div class="app-container">
-    <Randomizer @randomize="randomizeCard" />
+    <Randomizer @randomize="randomizeSideMenu" />
 
     <main>
-      <MainCardList :cards="cards" @flip-card="flipCard" />
+      <MainCardList :cards="visibleCards" @card-selected="handleCardSelected" @flip-card="flipCard" />
       <SideMenu :selectedCard="selectedCard" />
     </main>
   </div>
@@ -60,14 +60,23 @@ export default {
         { id: 39, name: 'The tarrasque', type: 'Neutral' ,effect: "Solana becomes impossibly resistant to any and all forms of damage, and develops twice as much strength as her baseline. She also regenerates up to half her vitality and will, which is roll-dependent. During this time, her mobility and ability to attack are severly hampered. She is also unable to use magic during this time. This effect can be turned off at will after three turns have elapsed", imageUrl: require('@/assets/The tarrasque_cutout.png'), flipped: false },
         { id: 40, name: 'The stygian', type:'Neutral' ,effect: "The card assesses Solana and her companions in the midst of battle. Those that are closer to death are empowered and will deal significantly more damage with any attack. Even a glancing blow may inflict grievous wounds. Those that are closer to full strength will be weakened and will lose vitality. If the loss of vitality reduces them to half their vitality, the former empowerment effect will be granted and the weaken will be removed", imageUrl: require('@/assets/The stygian_cutout.png'), flipped: false },
         // Add the rest of your 40 cards here
-      ],
+      ],       hiddenCard: { id: 41, name: 'The jester', type: 'Secret', effect: 'Solana is can select a card of her choosing' ,imageUrl: require('@/assets/The jester_cutout.png'), flipped: false },
       selectedCard: null
     };
   },
+  computed: {
+    visibleCards() {
+      return this.cards.filter(card => card.id !== 41); // Exclude the hidden card
+    },
+  },
   methods: {
-    randomizeCard() {
-      const randomIndex = Math.floor(Math.random() * this.cards.length);
-      this.selectedCard = this.cards[randomIndex];
+    randomizeSideMenu() {
+      const randomNumber = Math.floor(Math.random() * 50) + 1;
+      if (randomNumber === 1) {
+        this.selectedCard = this.hiddenCard; // 1 in 100 chance to select hidden card
+      } else {
+        this.selectedCard = this.cards[Math.floor(Math.random() * this.cards.length)];
+      }
     },
     flipCard(id) {
       this.cards = this.cards.map(card =>
