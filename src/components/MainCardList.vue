@@ -23,7 +23,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 100px; /* Reduced gap to avoid excessive spacing */
-  padding: 50px;
+  padding: 80px;
   overflow: visible; /* Ensure the grid allows overflow */
   position: relative;
 }
@@ -35,7 +35,7 @@
     .card-display {
       grid-template-columns: repeat(4, 1fr); /* 4 columns for medium screens */
       gap: 100px;
-      padding: 15px;
+      padding: 80px;
     }
   }
 
