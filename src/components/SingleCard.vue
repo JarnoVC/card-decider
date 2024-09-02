@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @click="flipCard">
+  <div class="card" :class="{ 'no-hover': disableHover }" @click="flipCard">
     <div class="card-inner" :class="{ flipped: card.flipped }">
       <div class="card-front">
         <img :src="card.imageUrl" alt="Card Image" class="card-image" />
@@ -13,10 +13,18 @@
 
 <script>
 export default {
-  props: ['card'],
+  props: {
+    card: Object,
+    disableHover: {
+      type: Boolean,
+      default: false
+    }
+  },
   methods: {
     flipCard() {
-      this.$emit('click');
+      if (!this.disableHover) {
+        this.$emit('click');
+      }
     }
   }
 };
@@ -24,9 +32,23 @@ export default {
 
 <style scoped>
 .card {
-  width: 250px; /* Adjust to fit inside the grid */
-  height: 400px; /* Ensure the card scales correctly */
+  width: 250px;
+  height: 400px;
   perspective: 1000px;
+  transition: transform 0.3s ease;
+  position: relative; /* Ensure the card can be layered above others */
+}
+
+.card:hover {
+  transform: scale(1.2);
+  z-index: 10; /* Bring the card to the front */
+  overflow: visible; /* Ensure enlarged card is not clipped */
+}
+
+/* Disable hover effect when disableHover prop is true */
+.no-hover:hover {
+  transform: none;
+  z-index: auto;
 }
 
 .card-inner {

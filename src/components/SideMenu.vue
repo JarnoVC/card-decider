@@ -1,12 +1,12 @@
 <template>
-    <div class="side-menu">
-      <h2>Selected Card</h2>
-      <div v-if="selectedCard" class="selected-card">
-        <Card :card="selectedCard" />
-      </div>
+  <div class="side-menu">
+    <h2>Selected Card</h2>
+    <div v-if="selectedCard" class="selected-card">
+      <Card :card="selectedCard" :disableHover="true" />
     </div>
-  </template>
-  
+  </div>
+</template>
+
   <script>
   import Card from './SingleCard.vue';
   

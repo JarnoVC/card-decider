@@ -35,6 +35,24 @@ export default {
         { id: 14, name: 'The thorned rose', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The thorned rose_cutout.png'), flipped: false },
         { id: 15, name: 'The twin', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The twin_cutout.png'), flipped: false },
         { id: 16, name: 'The valkyrie', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The valkyrie_cutout.png'), flipped: false },
+        { id: 17, name: 'Northern winds', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/Northern winds_cutout.png'), flipped: false },
+        { id: 18, name: 'The chronomancer', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The chronomancer_cutout.png'), flipped: false },
+        { id: 19, name: 'The devil', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The devil_cutout.png'), flipped: false },
+        { id: 20, name: 'The divergent', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The divergent_cutout.png'), flipped: false },
+        { id: 21, name: 'The empyrean', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The empyrean_cutout.png'), flipped: false },
+        { id: 22, name: 'The forest nymph', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The forest nymph_cutout.png'), flipped: false },
+        { id: 23, name: 'The fountain', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The fountain_cutout.png'), flipped: false },
+        { id: 24, name: 'The gavel', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The gavel_cutout.png'), flipped: false },
+        { id: 25, name: 'The honorbound', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The honorbound_cutout.png'), flipped: false },
+        { id: 26, name: 'The still', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The still_cutout.png'), flipped: false },
+        { id: 27, name: 'The lovers', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The lovers_cutout.png'), flipped: false },
+        { id: 28, name: 'The loving mother', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The loving mother_cutout.png'), flipped: false },
+        { id: 29, name: 'The lurking shadow', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The lurking shadow_cutout.png'), flipped: false },
+        { id: 30, name: 'The mirror', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The mirror_cutout.png'), flipped: false },
+        { id: 31, name: 'The reaper', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The reaper_cutout.png'), flipped: false },
+        { id: 32, name: 'The shadow', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The shadow_cutout.png'), flipped: false },
+        { id: 33, name: 'The siren', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The siren_cutout.png'), flipped: false },
+        { id: 34, name: 'The imp', effect: 'Buff: +10 Strength', imageUrl: require('@/assets/The imp_cutout.png'), flipped: false },
         // Add the rest of your 40 cards here
       ],
       selectedCard: null
@@ -53,7 +71,6 @@ export default {
   }
 };
 </script>
-
 <style scoped>
 .app-container {
   border: 10px solid #c19a6b;
@@ -61,20 +78,24 @@ export default {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure the container takes at least full viewport height */
+  min-height: 100vh;
   box-sizing: border-box;
-  overflow: hidden; /* Hide any overflow from within the container */
+  overflow: visible; /* Allow overflow in case of enlarged elements */
+  position: relative;
 }
 
 main {
   display: flex;
   flex: 1;
-  overflow-y: auto; /* Allows scrolling if the content overflows vertically */
-  overflow-x: hidden; /* Prevents horizontal overflow */
+  overflow: visible; /* Ensure the content in main can overflow without clipping */
+  position: relative;
 }
+
 
 .card-display {
   flex: 3;
+  position: relative; /* Ensure that cards within the grid can overflow */
+  z-index: 1; /* Default z-index */
 }
 
 .random-result {
