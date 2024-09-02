@@ -89,7 +89,7 @@ export default {
 <style scoped>
 .app-container {
   border: 10px solid #c19a6b;
-  background-color: #f5f5dc;
+  background: url('@/assets/woodtexture.jpg') repeat;
   padding: 20px;
   display: flex;
   flex-direction: column;
